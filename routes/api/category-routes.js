@@ -5,6 +5,21 @@ const { Category, Product } = require('../../models');
 
 router.get('/', (req, res) => {
   // find all categories
+  try {
+    const categories = await Category.findAll({
+      // JOIN with Products, using the Trip through table
+      include: [{ model: Product, through: Product, as: 'associated_products' }]
+    });
+
+    if (!categories) {
+      res.status(404).json({ message: 'No categories found!' });
+      return;
+    }
+
+    res.status(200).json(categories);
+  } catch (err) {
+    res.status(500).json(err);
+  }
   // be sure to include its associated Products
 });
 
