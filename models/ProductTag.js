@@ -13,7 +13,7 @@ ProductTag.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    proudctId: {
+    proudct_id: {
       type: DataTypes.INTEGER,
       // prevents null values
       references: {
@@ -21,7 +21,7 @@ ProductTag.init(
         key: 'id'
       }
     },
-    tagId: {
+    tag_id: {
       type: DataTypes.INTEGER,
       // prevents null values
       references: {
